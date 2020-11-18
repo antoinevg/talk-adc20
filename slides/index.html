@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Talk: Bare metal audio programming with Rust</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured">
+        </script>
+        <!-- script type="text/javascript" src="lib/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" >
+        </script -->
+    </head>
+    <body>
+        <!-- script src="lib/remark-0.15.0.min.js"></script -->
+        <script src="lib/remark-0.15.0.js"></script>
+        <script>
+            window.addEventListener("load", function() {
+                var slideshow = remark.create({
+                    //ratio: "4:3",
+                    ratio: "16:9",
+                    navigation: {
+                        scroll: false,  // Enable or disable navigating using scroll
+                        touch: false,   // Enable or disable navigation using touch
+                        click: false,   // Enable or disable navigation using click
+                    },
+                    sourceUrl: "index.md",
+                    countIncrementalSlides: false,
+                    timer: {
+                        startOnChange: true,
+                        resetable: true,
+                        enabled: true
+                    },
+
+                    highlightLanguage: "rust",
+                    //highlightStyle: "default",
+
+                    // https://highlightjs.org/static/demo/
+                    //highlightStyle: "obsidian",
+                    //highlightStyle: "ocean",
+                    //highlightStyle: "paraiso-dark",
+                    //highlightStyle: "paraiso-light",
+                    //highlightStyle: "arta",
+                    //highlightStyle: "ascetic",
+                    //highlightStyle: "dark",
+                    //highlightStyle: "far",
+                    //highlightStyle: "github",
+                    //highlightStyle: "googlecode",
+                    //highlightStyle: "idea",
+                    //highlightStyle: "ir-black",
+                    //highlightStyle: "magula",
+                    //highlightStyle: "monokai",
+                    //highlightStyle: "nord",
+                    //highlightStyle: "obsidian",
+                    //highlightStyle: "ocean",
+                    //highlightStyle: "rainbow",
+                    //highlightStyle: "solarized-dark", // !
+                    //highlightStyle: "solarized-light",
+                    //highlightStyle: "sunburst",
+                    //highlightStyle: "tomorrow",
+                    //highlightStyle: "tomorrow-night-blue",
+                    //highlightStyle: "tomorrow-night-bright",  // !
+                    //highlightStyle: "tomorrow-night",
+                    //highlightStyle: "tomorrow-night-eighties",
+                    //highlightStyle: "vs",
+                    highlightStyle: "zenburn",  // !
+
+                    highlightLines: false, // lines that start with *
+                    highlightSpans: false,  // blocks between ` `
+                });
+
+                MathJax.Hub.Config({
+                    tex2jax: {
+                        inlineMath: [['$','$'], ['\\(','\\)']],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+                    }
+                });
+                MathJax.Hub.Configured();
+                setTimeout(function () {
+                    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+                }, 500);
+            });
+        </script>
+    </body>
+</html>

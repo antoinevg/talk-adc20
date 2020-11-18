@@ -1,0 +1,253 @@
+/*@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700);
+@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);*/
+
+@import url(https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Questrial&display=swap);
+/*@import url(https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800&display=swap);*/
+@import url(https://fonts.googleapis.com/css2?family=Mulish&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap);
+
+@import url("table.css");
+
+
+/* - fonts ----------------------------------------------------------------- */
+
+body {
+    font-weight: 400; /* 100 to 900, where 400 is regular */
+    font-family: "Questrial";
+    /*font-family: "Didact Gothic";*/
+    /*font-family: "Mulish";*/
+    /*font-family: "Sawarabi Gothic";*/
+    /*font-family: "PT Sans";*/
+    /*font-family: "Helvetica Neue";*/
+    /*font-family: "Futura";*/
+}
+
+pre, code {
+    font-size: 0.75em;
+    font-weight: 500;
+    /*font-family: "Monaco";*/
+    /*font-family: "Courier";*/
+    font-family: "Fira Code";
+    /*font-family: "JetBrains Mono";*/
+}
+
+
+code.text.remark-code  {
+    font-size: 0.75em;
+    font-weight: 400;
+    color: #300;
+}
+
+code.text.remark-code div.remark-code-line {
+    background-color: #f9f9f9;
+}
+
+
+
+
+/* - elements -------------------------------------------------------------- */
+
+a {
+    /*color: #DA251D;*/
+    color: #281670;
+    text-decoration: none;
+}
+
+
+/* - custom styles --------------------------------------------------------- */
+
+.branded {
+    background-image: url("../images/flowdsp.png");
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 160px;
+}
+
+.branded-adc20 {
+    background-image: url("../images/adc20.jpg");
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 160px;
+}
+
+.title h1 {
+    font-size: 3.5em;
+    font-weight: 400;
+}
+
+.link-to-slides {
+    margin-top: 2.5em;
+    font-size: 1.5em;
+}
+
+.speaker {
+    position: absolute;
+    bottom: 1em;
+    right: 3em;
+    text-align: right;
+    font-size: 150%;
+}
+
+.footnote {
+    position: absolute;
+    bottom: 3em;
+    right: 3em;
+    font-size: 80%;
+    font-style: italic;
+}
+
+/* hide scrollbar on Firefox */
+.remark-slide-scaler {
+    scrollbar-width: none;
+}
+
+/* hide scrollbar on WebKit */
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+
+.highlight {
+    background-color: #ee8;
+}
+
+
+/* - remark theme ---------------------------------------------------------- */
+
+/* hierarchy is:
+
+    .remark-container,
+    .remark-slides-area,
+    .remark-slide-container,
+    .remark-slide-scaler,
+    .remark-slide,
+    .remark-slide-content {
+    }*/
+
+.remark-slide-content {
+    /*background-color: black;
+    color: white;*/
+    font-size: 1.0em;
+}
+
+
+.remark-inline-code {
+    background: #f0f0f0;
+}
+
+
+/* - image sizes ----------------------------------------------------------- */
+
+.smaller img {
+    max-width: 45%;
+}
+
+.small img {
+    max-width: 50%;
+}
+
+.normal img {
+    max-width: 60%;
+}
+
+.normal-fixed img {
+    height: 200px;
+    border: 1px solid gray;
+}
+
+
+.big img {
+    max-width: 75%;
+}
+
+.bigger img {
+    max-width: 100%;
+}
+
+
+/* - code ------------------------------------------------------------------ */
+
+.small code {
+    font-size: 10px;
+}
+
+
+
+/* - scrollable container -------------------------------------------------- */
+
+.scroll {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 500px;
+    scroll-direction: horizontal;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.scroll img {
+    height: 480px;
+    display: inline-block;
+}
+
+
+/* - positioning ----------------------------------------------------------- */
+
+div.halfway {
+    border: 0px solid green;
+    display: -webkit-flexbox;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* - positioning: floats --------------------------------------------------- */
+
+.float-left {
+    width: 48%;
+    float: left;
+    border: 0px solid green;
+    padding: 0;
+    margin: 0;
+
+}
+.float-left h2:last-of-type, .float-left h3:last-child {
+    color: #000;
+}
+.float-right {
+    width: 48%;
+    float: right;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+/*
+.inverse {
+    background: #28166F;
+    color: #f0f0f0;
+    text-shadow: 0 0 20px #333;
+}
+
+.black {
+    background: black;
+}
+
+*/
