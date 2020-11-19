@@ -1,16 +1,6 @@
 class: branded-adc20
 
 ???
-* Thank you for the introduction Timour
-* I'm grateful for the opportunity to be talking at ADC20 tonight!
-
-
-####Remember
-
-* One topic per slide
-* Remember to pause. A. LOT.
-* This is just a primer, not a year-course.
-
 ####keys
 
 * h or ?: Toggle the help window
@@ -32,24 +22,6 @@ class: center, middle
 
 .bigger[![](images/about_me.png)]
 
-???
-* Good evening
-* My name is Antoine
-* I'm from Cape Town, South Africa
-* I'm a musician and self-taught engineer who likes to make stuff.
-* About 5 years ago my kids hit their late teens.
-* Some people would use that as their cue to buy a sports car but I got myself a nice oscilloscope instead
-* This was the beginning of flowdsp.io
-* Done a lot of R&D towards building hybrid analog/digital music hardware
-* But tonight I'd specifically like to talk about the impact Rust is having on the digital / embedded development side
-
-####ObDisclaimer
-
-Embedded Rust is a really big topic with some pretty unique angles and I don't have a lot of time!
-
-* I've had to think carefully about what to cover and what not.
-* So I'm probably gloss over or leave out one of your favorite bits.
-* For this I do apologize in advance and thank you for your patience!
 
 ---
 
@@ -63,14 +35,6 @@ class: center, middle
 
 ## ADC20: Tom Waldron - Hitchhiker's Guide To Embedded Audio
 ### [https://audio.dev/talks/hitchhikers-guide-to-embedded-audio](https://audio.dev/talks/hitchhikers-guide-to-embedded-audio)
-
-???
-Ian's talk was in many ways the genesis of this talk.
-
-
-* Specifically, if you're looking for a talk which does a deep dive on the Rust Language: Ian
-* If you're looking for a talk which does a deep dive on embedded topics: Check out Tom tommorrow night
-
 
 ---
 
@@ -104,26 +68,13 @@ After all...
 ]
 
 
-???
-
-After all, why buy a Raspberry Pi?
-
-...when you can have the fastest Arduino in the world!
-
-* Raspberry Pi 4 costs 34,60280 € has 4x cores @ 1.5 GHz, 2GB SDRAM and as much flash as you can fit into a micro-sd slot.
-
-* Arduino Zero costs 48 euro (US$42.90) for a single 32-bit core running @ 48 MHz, 32KB SRAM and 256 KB Flash.
-
 ---
 
 ## Reason 1: not everyone needs to be a super-computer
 
 .big[![Not supercomputers](images/not_a_supercomputer.png)]
 
-
 ???
-Seriously, I used to develop bioinformatics algorithms for supercomputers that had less processing power!
-
 * Thea Flowers - Big hunking button, Microchip/Atmel SAM D21 @ 48 MHz
   * https://blog.thea.codes/designing-big-honking-button/
 * émilie gillet - Braids, STM32F103 @ 72 MHz, no codec even
@@ -178,16 +129,6 @@ Seriously, I used to develop bioinformatics algorithms for supercomputers that h
 ]
 
 
-
-???
-NXP i.MX8 is roughly equivalent to RPI in terms of horsepower
-
-STM32F103 aka "blue pill" cranks 72MHz - used by https://mutable-instruments.net/modules/braids/
-
-ESP32-WROVER-E by the way, cranks 2 cores @ 240MHz each w/ 16MB Flash + 8 MB PSRAM, 802.11 b/g/n networking and Bluetooth!
-
-Check out: CTAG Strämpler
-
 ---
 
 class: center, middle
@@ -196,11 +137,6 @@ class: center, middle
 
 .normal[![Raspberry Pi Compute Goes Brrrrr!!](images/meme_goes_brrrr.png)]
 
-
-???
-rPi compute modules goes for $25
-
-Hahahaha: https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=9181
 
 ---
 
@@ -229,34 +165,6 @@ Hahahaha: https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=9181
 
 * No ADC or DAC peripherals.
 * Only one PWM pin
-
-???
-Broadcom BCM2711 PCM/I2S peripheral
-ESP32 has 16 PWM's
-
-https://datasheets.raspberrypi.org/bcm2711/bcm2711-peripherals.pdf
-
-You could use an application processor like: i.MX7 / i.MX8
-
-* Dev boards start at $149 for e.g. Coral Dev Board
-* Form factors are not great for using dev boards in a final product
-* You're going to need a high-speed digital design guru with serious chops if you want to roll your own.
-
-Or maybe:
-
-Use a USB multi-channel audio interface if you can live with the latency.
-
-* https://www.presonus.com/learn/technical-articles/Digital-Audio-Latency-Explained
-* Transport front buffer USB
-* ASIO driver input buffer
-* ASIO driver output buffer
-* Transport back buffer USB
-* USB Bus clock is based on a 1ms timer
-* No control though, so manufacturers need to set it quite high
-* Can be as high as 6ms!
-* This is why onboard monitoring is common
-* Thunderbolt lets you to access the bus master DMA directly
-* So you can start looking at 64 bit
 
 
 ---
@@ -302,46 +210,6 @@ i.e. https://bela.io/about.html @  132,24 Euro to 164,21 Euro | £120 to £149
 .bigger[![Daisy Seed](images/daisy_seed_45.jpg)]
 ]
 
-???
-* Moore's law ain't entirely dead yet
-
-### So MCU because:
-
-* More Peripherals i.e. SAI, GPIO's
-* Full control - so e.g. low latency, schedule for max performance of task not best compromise
-* Simplicity, no operating system to worry about.
-* Energy use is low.
-* Affordable: Can do product development with a fraction of the engineering resources required for other platforms.
-* Affordable: The chips themselves cost a fraction of the devboards.
-
-### What's the best MCU?
-
-Why not just go with the fastest?
-
-Teensy 4.1: NXP iMXRT1062 Cortex-M7 processor @ 600 MHz
-
-https://www.pjrc.com/store/teensy41.html
-
-$26.85 | 22,69 Euro
-
-Package: BGA
-
-### With audio:
-
-https://www.pjrc.com/store/teensy3_audio.html
-
-$13.75 | 16,20520 €
-
-16 bits, 44.1 kHz.
-
-Package: QFN
-
-### Things that matter for Audio
-
-* Hand-solderable
-* SAI (Synchronous Audio Interface) vs I2S (Inter-IC Sound aka eye-squared-ess)
-* Still fast
-
 ---
 ## STM32H750
 
@@ -365,12 +233,6 @@ ARM Cortex-M7 Microcontroller @ 480 MHz
 
 Currently the fastest MCU available in LQFP packaging
 ]
-
-???
-#### LQFP = low-profile quad flat package:
-* i.e. can be hand-soldered
-* Which means actual custom board development is within reach of smaller companies
-* you don't have to figure out how to jam a development kit in a box.
 
 
 ---
@@ -403,14 +265,6 @@ Electro-Smith Daisy Seed Development Board:
 US$29 | ~24.50 Euro
 ]
 
-???
-Designed for audio developers
-
-#### SAI
-* Synchronous Audio Interface, each with two channels, each support 16 channels of audio per frame///
-* Chip itself supports up to 4 of them
-
-I promise they're not giving me anything to say any of this!
 
 ---
 
@@ -524,8 +378,7 @@ sudo port install openocd
 cargo install cargo-generate
 ```
 
-Also get openocd from: https://xpack.github.io/openocd/install/
-What is `cargo`: Cargo is the rust package manager
+Can also get openocd from: https://xpack.github.io/openocd/install/
 
 
 ---
@@ -671,17 +524,6 @@ class: middle
 
 ## No API's: Manufacturer's HAL / In-house HAL / [SVD](https://www.keil.com/pack/doc/cmsis/SVD/html/svd_Format_pg.html)
 
-???
-The similarity is not co-incidental. OS, API & Drivers are higher level abstractions of these things.
-
-#### Processor
-* Nested Vectored Interrupt Controller: The NVIC is an embedded interrupt controller that supports low latency interrupt processing.
-* System Control Block: The System Control Block (SCB) is the programmers model interface to the processor. It provides system implementation information and system control, including configuration, control, and reporting of system exceptions.
-* Integrated instruction and data caches: The instruction and data caches provide fast access to frequently accessed data and instructions, providing support for increased average performance when using system based memory.
-* System timer: The system timer, SysTick, is a 24-bit count-down timer. Use this as a Real Time Operating System (RTOS) tick timer or as a simple counter.
-* Memory Protection Unit: The Memory Protection Unit (MPU) improves system reliability by defining the memory attributes for different memory regions. It provides up to 8 different regions, and an optional predefined background region.
-* Floating-point unit: The FPU provides IEEE754-compliant operations on 32-bit single-precision and 64-bit double-precision floating-point values.
-
 
 ---
 
@@ -758,14 +600,6 @@ x 0x58020814
 ## No Device Drivers $\Longrightarrow$ Peripheral Registers
 ## No API's $\Longrightarrow$ ?
 
-???
-ObDisclaimer:
-
-If this looks scary, it is NOT the day-to-day rust dev experience.
-
-Mostly the action is on a much higher level of abstraction
-
-https://github.com/rust-embedded/awesome-embedded-rust
 
 ---
 
@@ -791,13 +625,7 @@ https://github.com/rust-embedded/awesome-embedded-rust
 ]
 
 ???
-
-rtic -> Jorge Aparicio
-
-* More architecture support crates: cortex-a, riscv, mips
-* More peripheral access crates: Microchip, Nordic, NXP, SiFive, Silicon Labs, Xtensa, TI, MSP430, Ambiq apollo mcu's, GigaDevice, XMC
-* Same for HAL
-* More board support crates: Adafruit, Arduino, SeeedStudio, [PlayStation-2](https://github.com/Ravenslofty/prussia), teensy4-rs
+https://github.com/rust-embedded/awesome-embedded-rust
 
 ---
 
@@ -884,11 +712,6 @@ impl<'a> GPIOCEN_W<'a> {
 ```]
 ]
 
-???
-**svd** stands for *system view description*
-
-https://docs.rs/stm32h7/0.12.1/stm32h7/stm32h743v/rcc/ahb4enr/index.html
-
 ---
 
 ## blinky with the `stm32h7` Peripheral Access Crate
@@ -924,11 +747,6 @@ fn main() -> ! {
 cargo run --example blinky_pac
 ```
 
-
-Talk a bit about zero-cost and show how these register objects point directly at the memory!
-
-* Why is it safer? Names are not types!
-
 ```
 let rcc_ahb4enr = &dp.RCC.ahb4enr  as *const _ as u32; // advanced high-performance bus clock enable register
 hprintln!("rcc_ahb4enr: {:X}", rcc_ahb4enr).unwrap();  // $\Longrightarrow$ 0x580244e0
@@ -936,7 +754,7 @@ hprintln!("rcc_ahb4enr: {:X}", rcc_ahb4enr).unwrap();  // $\Longrightarrow$ 0x58
 
 #### Why use callbacks
 
-Mainly for the modify case :-)
+Mainly for the modify case:
 
 ```rust
 # read()
@@ -1154,13 +972,6 @@ error: aborting due to previous error
 ```
 
 
-???
-So this is useful because...
-
-This is not unique to Rust by the way
-see e.g. Yaron Minsky https://blog.janestreet.com/effective-ml-revisited/
-and "Builder Pattern"
-
 ---
 
 ## How does it work?
@@ -1196,13 +1007,6 @@ impl<MODE> OutputPin for PC7<Output<MODE>> {
 }
 ```
 
-???
-Uses the code re-use mechanism
-
-* defines traits
-* like a C++ Abstract Class or more closely - Concepts   / Swift Protocols / Java Interface
-* uniform interface across ST, Microchip, Analog Devices, NXP
-* take note of (&mut self) !
 
 ---
 
@@ -1239,9 +1043,6 @@ impl<MODE> PC7<MODE> {
     }
 }
 ```
-
-???
-PC7 is a ZST - zero sized type
 
 ---
 
@@ -1306,25 +1107,6 @@ class: center, middle
 <img src="images/stm32h7_audio.png"></img>
 ]
 
-???
-Why DMA?
-
-Usually when we are copying data in a program we'll use the CPU to execute copy instructions that move data between memory regions or device registers.
-
-Sometimes this can create problems when we work with one or more of...
-
-* Large amounts of data: The CPU cannot continue to execute the program until it has completed the copy operation. (e.g. disk drives)
-* High speed data: The CPU may not be fast enough to produce/consume data at the rate a peripheral requires. (e.g. network interfaces)
-* Precisely timed data: The CPU may not be able to produce data at sufficiently accurate timing intervals for the requirements of the peripheral. (e.g. audio codecs)
-
-Direct Memory Access (DMA) controllers are dedicated peripherals that solve these problems by providing a programmable memory access interface that works independently of the CPU.
-
-A great analogy I came across recently is that DMA provides an asynchronous memcpy interface that lets you:
-
-1. Specify a source peripheral or memory address.
-1. Specify a destination peripheral or memory address.
-1. Specify the behaviors that control how and when these transfers occur.
-1. Specify an interrupt handler to be invoked when the transfer is complete or an error has occured.
 
 ---
 
@@ -1335,7 +1117,7 @@ A great analogy I came across recently is that DMA provides an asynchronous memc
 ]
 
 ???
-MCLK: 256 * FS = 12_288_000 Hz  <-- PARENT CLOCK, NOT MASTER!!!
+MCLK: 256 * FS = 12_288_000 Hz
 BCLK: 48_000 Hz
 LRCK: 48_000 / 32 = 1_500 Hz
 
@@ -1373,8 +1155,6 @@ fn main() -> ! {
 cargo run --example audio_testsignal
 ```
 
-Open VCV Rack
-
 ---
 
 class: center, middle
@@ -1388,8 +1168,6 @@ class: center, middle
 
 ![](images/safety.png)
 
-???
-REFERENCE: [RustConf 2018 - Getting Something for Nothing by James Munns](https://www.youtube.com/watch?v=t99L3JHhLc0)
 
 
 ---
@@ -1587,9 +1365,7 @@ Demonstrate that I can use `midi_note` in the USART irq or the DMA1 irq, but nev
 cargo run --example audio_midi_2
 ```
 
-For better or worse Rust inherits the memory model for atomics from C++20
-
-e.g. Ordering::Relaxed corresponds to `memory_order_relaxed` in C++20
+Ordering::Relaxed corresponds to `memory_order_relaxed` in C++20
 
 ---
 
@@ -1739,13 +1515,6 @@ cargo run --example audio_synth
 * Link easily with C/C++ - both ways!
 * Link easily with Javascript via WASM
 
-???
-Went from a separate multi-gig dev environment download for each of these to one toolchain.
-
-Talk to me if you're interested in any of these.
-
-I also have C/C++ coverage on most of these platforms if you can't drop everything and switch to rust :-D
-
 
 ---
 
@@ -1757,10 +1526,6 @@ class: center, middle
 
 # There's a book for that!
 
-???
-
-Now what you have to understand about Rust is that every time we talk
-about what happens next, there's gonna be a book for that!
 
 ---
 
@@ -1808,15 +1573,6 @@ class: middle
 * ### [Frans Skarman, "An Overview of the Embedded Rust Ecosystem"](https://www.youtube.com/watch?v=vLYit_HHPaY)
 
 * ### [Jorge Aparicio, "Fearless Concurrency In Your Microcontroller"](https://www.youtube.com/watch?v=J4dZRrldMcI)
-
-???
-* The 3 things of rust: safety, concurrency, speed ??? - check
-* Language editions give you language updates without having to rewrite your old code so you don't get stuck. This is MASSIVE.
-* 6-week cadence. stability guarantee. only breaking changes are around safety
-* opt-out safety rather than opt-in - do have escape hatches though. default is safe.
-* culture is opposite to c++: "we suffered so you have to suffer too" - more "let's fix this so that no one else has to go through that again!"
-* culture is: if we haven't solved it yet we don't ban it, we leave an escape hatch you can use until we've figured it out
-
 
 
 
