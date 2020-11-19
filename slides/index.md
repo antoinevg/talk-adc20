@@ -1578,6 +1578,8 @@ class: middle
 
 ---
 
+class: branded
+
 .title[
 # Bare Metal Audio Programming With Rust
 ]
